@@ -110,7 +110,7 @@
             transform: scale(1.05);
         }
 
-        /* ATUALIZADO: Estilos para a galeria de 4 imagens */
+        /* Estilos para a galeria de 4 imagens */
         .image-gallery {
             display: grid;
             grid-template-columns: repeat(2, 1fr); /* 2 colunas */
@@ -120,7 +120,7 @@
 
         .image-gallery img {
             width: 100%;
-            height: 150px; /* Um pouco mais de altura */
+            height: 200px; /* ATUALIZADO: Altura aumentada */
             object-fit: cover;
             border-radius: 0.5rem;
             border: 2px solid white;
@@ -130,7 +130,8 @@
 </head>
 <body class="py-12 px-4">
 
-    <div class="max-w-2xl mx-auto text-center">
+    <!-- ATUALIZADO: Aumentado o tamanho máximo do container -->
+    <div class="max-w-4xl mx-auto text-center">
         <!-- Header Principal -->
         <header class="mb-12">
             <h1 class="main-title text-6xl md:text-7xl text-white">Studio Renata</h1>
@@ -142,7 +143,7 @@
 
             <!-- Card: Peluquería -->
             <section class="category-card p-6 md:p-8">
-                <!-- ATUALIZADO: Galeria com 4 imagens do seu repositório -->
+                <!-- Galeria com 4 imagens do seu repositório -->
                 <div class="image-gallery">
                     <img src="1JPG.jpg" alt="Exemplo de corte de cabelo 1">
                     <img src="2JPG.jpg" alt="Exemplo de corte de cabelo 2">
