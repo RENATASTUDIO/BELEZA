@@ -15,6 +15,10 @@
     
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 
     <style>
         body {
@@ -42,7 +46,6 @@
             font-family: 'Playfair Display', serif;
             font-style: italic;
             font-weight: 700;
-            color: #1e293b; /* Cor escura para contraste */
         }
         
         .category-card {
@@ -53,46 +56,6 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        
-        .category-title {
-            background-color: #e11d48; /* Rosa forte para destaque */
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            display: inline-block;
-        }
-        
-        .service-list {
-            color: #334155;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.75rem;
-            text-align: left;
-            padding: 0 1rem;
-        }
-
-        .service-list span {
-            display: flex;
-            align-items: center;
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-        }
-
-        .service-list i {
-            width: 1rem;
-            height: 1rem;
-            margin-right: 0.75rem;
-        }
-        
-        .icon-pride-1 { color: #ef4444; }
-        .icon-pride-2 { color: #f97316; }
-        .icon-pride-3 { color: #eab308; }
-        .icon-pride-4 { color: #22c55e; }
-        .icon-pride-5 { color: #3b82f6; }
-        .icon-pride-6 { color: #8b5cf6; }
         
         .contact-footer {
             background: linear-gradient(180deg, #374151, #1f2937);
@@ -110,60 +73,133 @@
             transform: scale(1.05);
         }
 
-        /* Estilos para a galeria de 4 imagens */
-        .image-gallery {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2 colunas */
-            gap: 0.75rem; /* Espaçamento entre imagens */
-            margin-bottom: 2rem;
+        /* Estilos para a galeria interativa */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease, margin 0.5s ease;
+            padding: 0 1rem;
+            margin-top: 0;
+        }
+        .accordion-content.open {
+            max-height: 500px;
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: rgba(243, 244, 246, 0.7);
+            border-radius: 0.5rem;
+        }
+        
+        .rotate-180 {
+            transform: rotate(180deg);
         }
 
-        .image-gallery img {
-            width: 100%;
-            height: 200px; /* ATUALIZADO: Altura aumentada */
-            object-fit: cover;
-            border-radius: 0.5rem;
-            border: 2px solid white;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
     </style>
 </head>
-<body class="py-12 px-4">
+<body class="py-12 px-4 bg-gray-100">
 
-    <!-- ATUALIZADO: Aumentado o tamanho máximo do container -->
-    <div class="max-w-4xl mx-auto text-center">
+    <div class="max-w-5xl mx-auto text-center">
         <!-- Header Principal -->
         <header class="mb-12">
             <h1 class="main-title text-6xl md:text-7xl text-white">Studio Renata</h1>
             <p class="text-gray-200 mt-2 text-lg font-medium tracking-wider">ATENDIMENTO UNISSEX</p>
         </header>
 
-        <!-- Container das Categorias -->
+        <!-- Container da Galeria de Serviços -->
         <div class="space-y-8">
 
             <!-- Card: Peluquería -->
             <section class="category-card p-6 md:p-8">
-                <!-- Galeria com 4 imagens do seu repositório -->
-                <div class="image-gallery">
-                    <img src="1JPG.jpg" alt="Exemplo de corte de cabelo 1">
-                    <img src="2JPG.jpg" alt="Exemplo de corte de cabelo 2">
-                    <img src="3JPG.jpg" alt="Exemplo de corte de cabelo 3">
-                    <img src="4JPG.jpg" alt="Exemplo de corte de cabelo 4">
-                </div>
-
-                <h2 class="category-title mb-8">Peluquería</h2>
-                <div class="space-y-8 text-center">
-                    <div class="service-group">
-                        <div class="service-list">
-                            <span><i data-feather="circle" class="icon-pride-1"></i>CORTE</span>
-                            <span><i data-feather="circle" class="icon-pride-2"></i>PROGRESSIVA</span>
-                            <span><i data-feather="circle" class="icon-pride-3"></i>HIDRATAÇÃO</span>
-                            <span><i data-feather="circle" class="icon-pride-4"></i>TINTURA</span>
-                            <span><i data-feather="circle" class="icon-pride-5"></i>LUZES</span>
-                            <span><i data-feather="circle" class="icon-pride-6"></i>CHAPINHA</span>
+                <h2 class="main-title text-4xl md:text-5xl text-emerald-600 mb-10">Nossos Serviços</h2>
+                
+                 <!-- Galeria Interativa -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Serviço 1: Corte Masculino -->
+                    <div class="flex flex-col text-center bg-white/70 rounded-lg shadow-lg overflow-hidden border border-gray-200">
+                        <img src="./1JPG.jpg" alt="Corte de cabelo masculino" class="w-full h-64 object-cover">
+                        <div class="p-4 flex flex-col items-center flex-grow">
+                             <button class="accordion-toggle bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-6 rounded-full flex items-center justify-center w-auto">
+                                <span class="mr-2">Corte Masculino</span>
+                                <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                            </button>
+                            <div class="accordion-content text-left text-gray-700">
+                                <p>Cortes modernos e clássicos, adaptados ao seu estilo. Usamos técnicas de tesoura e navalha para um acabamento preciso e personalizado.</p>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Serviço 2: Coloração -->
+                    <div class="flex flex-col text-center bg-white/70 rounded-lg shadow-lg overflow-hidden border border-gray-200">
+                        <img src="./2JPG.jpg" alt="Aplicação de tintura de cabelo" class="w-full h-64 object-cover">
+                         <div class="p-4 flex flex-col items-center flex-grow">
+                             <button class="accordion-toggle bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-6 rounded-full flex items-center justify-center w-auto">
+                                <span class="mr-2">Coloração</span>
+                                <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                            </button>
+                            <div class="accordion-content text-left text-gray-700">
+                                <p>Serviços de tintura completa, luzes e mechas com produtos de alta qualidade que protegem e nutrem os fios, garantindo cores vibrantes e duradouras.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Serviço 3: Ferramentas -->
+                    <div class="flex flex-col text-center bg-white/70 rounded-lg shadow-lg overflow-hidden border border-gray-200">
+                        <img src="./3JPG.jpg" alt="Ferramentas de cabeleireiro" class="w-full h-64 object-cover">
+                         <div class="p-4 flex flex-col items-center flex-grow">
+                             <button class="accordion-toggle bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-6 rounded-full flex items-center justify-center w-auto">
+                                <span class="mr-2">Penteados</span>
+                                <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                            </button>
+                            <div class="accordion-content text-left text-gray-700">
+                                <p>Criação de penteados para todas as ocasiões, de eventos formais a looks casuais. Modelagem com escova, chapinha e babyliss para o acabamento perfeito.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Serviço 4: Styling -->
+                    <div class="flex flex-col text-center bg-white/70 rounded-lg shadow-lg overflow-hidden border border-gray-200">
+                        <img src="./4JPG.jpg" alt="Mão segurando secador e escova" class="w-full h-64 object-cover">
+                         <div class="p-4 flex flex-col items-center flex-grow">
+                             <button class="accordion-toggle bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-6 rounded-full flex items-center justify-center w-auto">
+                                <span class="mr-2">Tratamentos</span>
+                                <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                            </button>
+                            <div class="accordion-content text-left text-gray-700">
+                                <p>Recupere a saúde dos seus cabelos com nossos tratamentos de hidratação profunda, reconstrução capilar e progressiva. Cabelos mais fortes, brilhantes e sem frizz.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Serviço 5: Estilo Moderno -->
+                     <div class="flex flex-col text-center bg-white/70 rounded-lg shadow-lg overflow-hidden border border-gray-200">
+                        <img src="./5JPG.jpg" alt="Casal com cabelo estilizado" class="w-full h-64 object-cover">
+                         <div class="p-4 flex flex-col items-center flex-grow">
+                            <button class="accordion-toggle bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-6 rounded-full flex items-center justify-center w-auto">
+                                <span class="mr-2">Corte Feminino</span>
+                                <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                            </button>
+                            <div class="accordion-content text-left text-gray-700">
+                                <p>Do clássico ao ousado, realizamos cortes que valorizam seus traços e expressam sua personalidade. Consultoria de visagismo para encontrar o corte ideal.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Serviço 6: Corte com Navalha -->
+                    <div class="flex flex-col text-center bg-white/70 rounded-lg shadow-lg overflow-hidden border border-gray-200">
+                        <img src="./6JPG.jpg" alt="Cabeleireiro usando navalha" class="w-full h-64 object-cover">
+                         <div class="p-4 flex flex-col items-center flex-grow">
+                             <button class="accordion-toggle bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-6 rounded-full flex items-center justify-center w-auto">
+                                <span class="mr-2">Acabamentos</span>
+                                <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                            </button>
+                            <div class="accordion-content text-left text-gray-700">
+                                <p>A precisão está nos detalhes. Oferecemos design de barba, acabamentos com navalha e estilização para garantir um visual impecável e bem cuidado.</p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
             </section>
 
         </div>
@@ -180,6 +216,21 @@
     
     <script>
         feather.replace();
+
+        // Lógica para os botões "Ver Detalhes"
+        document.addEventListener('DOMContentLoaded', function () {
+            const accordionToggles = document.querySelectorAll('.accordion-toggle');
+            
+            accordionToggles.forEach(toggle => {
+                toggle.addEventListener('click', function () {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('i');
+                    
+                    content.classList.toggle('open');
+                    icon.classList.toggle('rotate-180');
+                });
+            });
+        });
     </script>
 </body>
 </html>
